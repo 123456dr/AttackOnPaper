@@ -3,6 +3,7 @@ from flask_cors import CORS
 import cv2
 import numpy as np
 import io
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -25,10 +26,11 @@ def upload():
     # 使用io.BytesIO將二進位資料包裝成檔案格式並用flask回傳前端
     return send_file(
         io.BytesIO(buffer.tobytes()), # 轉成BytesIO格式
-        mimetype='image/png',     # 告訴瀏覽器為png檔案
+        mimetype='image/png',      # 告訴瀏覽器為png檔案
         as_attachment=False, # 直接顯示而非下載檔案
         download_name='edges.png' # 檔案名稱
     )
 
 if __name__ == '__main__':
-    app.run(debug=True) # 啟動Flask 伺服器，
+    port = int(os.environ.get("PORT", 5000))  # Render 會自動設這個 PORT 變數
+    app.run(host='0.0.0.0', port=port)
