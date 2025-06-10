@@ -4,7 +4,8 @@
 # pip freeze > requirements.txt
 # 啟動腳本 uvicorn main:app --host 0.0.0.0 --port 10000
 # uvicorn main:app --reload 執行fastapi
-# render Build Command: pip install -r requirements.txt && Start Command: ./start.sh && Port: 10000
+# render Build Command: pip install -r requirements.txt 
+# start Command: uvicorn main:app --host 0.0.0.0 --port $PORT && Port: 10000
 
 
 from fastapi import FastAPI,File,UploadFile,Form
@@ -16,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uuid #產生亂數
 import cv2
 import numpy as np
+from fastapi.responses import RedirectResponse
 
 '''
 def ero(img):
@@ -65,7 +67,9 @@ async def upload_file( file: UploadFile = File(...)):
     return FileResponse(save_path, media_type="image/png")
 
 
-
+@app.get("/")
+def root():
+    return RedirectResponse(url="/docs")
 
 
 
