@@ -67,7 +67,7 @@ async def upload_file( file: UploadFile = File(...)):
     return FileResponse(save_path, media_type="image/png")
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def root():
     return RedirectResponse(url="/docs")
 
