@@ -45,7 +45,8 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://123456dr.github.io/AttackOnPaper/",
+        "https://123456dr.github.io",
+        "https://123456dr.github.io/AttackOnPaper",
         "http://localhost:5173",
     ], 
     allow_credentials=True,
