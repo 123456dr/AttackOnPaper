@@ -36,6 +36,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://123456dr.github.io",
+        "https://123456dr.github.io/#",
         "https://123456dr.github.io/AttackOnPaper",
         "http://localhost:5173",
     ], 
@@ -89,7 +90,7 @@ def cap_to_video(save_path, output_path, target_fps=12):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     #fourcc = cv2.VideoWriter_fourcc(*'mp4v') # four carator cope
-    fourcc = cv2.VideoWriter_fourcc(*'avc1' )       
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')#avc1' )       
     writer = cv2.VideoWriter(output_path, fourcc, target_fps, (width, height))
     frame_interval = int(fps // target_fps)
     count = 0
