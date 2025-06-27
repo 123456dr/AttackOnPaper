@@ -1,13 +1,3 @@
-# Swagger UI（點擊操作介面）：http://127.0.0.1:8000/docs
-# Redoc（文件版樣式）：http://127.0.0.1:8000/redoc
-
-# pip freeze > requirements.txt
-# 啟動腳本 uvicorn main:app --host 0.0.0.0 --port 10000
-# uvicorn main:app --reload 執行fastapi
-# render Build Command: pip install -r requirements.txt 
-# start Command: uvicorn main:app --host 0.0.0.0 --port $PORT && Port: 10000
-
-
 from fastapi import FastAPI,File,UploadFile,Form
 from pydantic import BaseModel
 from fastapi.responses import FileResponse #回傳圖片顯示
@@ -91,8 +81,9 @@ async def upload_file( file: UploadFile = File(...)):
 
 
 
+output_video_path = f"/tmp/RCaop{uuid.uuid4()}.mp4"
 #output_video_path=f"RCaop{uuid.uuid4()}.mp4"
-output_video_path = "output.mp4"
+#output_video_path = "output.mp4"
 #影格擷取與合成影片
 def cap_to_video(save_path, target_fps=12):
     cap = cv2.VideoCapture(save_path)
