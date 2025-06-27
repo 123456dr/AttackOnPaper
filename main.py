@@ -35,16 +35,13 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://123456dr.github.io",
-        "https://123456dr.github.io/#",
-        "https://123456dr.github.io/AttackOnPaper",
         "http://localhost:5173",
-    ], 
+        "https://123456dr.github.io"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 
 
@@ -83,14 +80,14 @@ async def upload_file( file: UploadFile = File(...)):
 
 
 #影格擷取與合成影片
-def cap_to_video(save_path, output_path, target_fps=12):
+def cap_to_video(save_path, output_path = "output.mp4", target_fps=12):
     cap = cv2.VideoCapture(save_path)
     fps = cap.get(cv2.CAP_PROP_FPS)
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     #fourcc = cv2.VideoWriter_fourcc(*'mp4v') # four carator cope
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')#avc1' )       
+    fourcc = cv2.VideoWriter_fourcc(*'avc1' )       
     writer = cv2.VideoWriter(output_path, fourcc, target_fps, (width, height))
     frame_interval = int(fps // target_fps)
     count = 0
@@ -108,24 +105,22 @@ def cap_to_video(save_path, output_path, target_fps=12):
     
     cap.release()
     writer.release()
-    #return output_video_path
+    return output_path
 
 
 
 @app.post("/upload_video")
 async def upload_video(file: UploadFile = File(...)): #, background_task:BackgroundTasks = BackgroundTasks()):
-    save_path = f"/tmp/RCaop{uuid.uuid4()}.mp4"
-    output_path = f"/tmp/RCaop_output_{uuid.uuid4()}.mp4"
+    save_path = f"RCaop{uuid.uuid4()}.mp4"
 
     with open(save_path, "wb") as buffer: # writebinary
         shutil.copyfileobj(file.file, buffer)
     
     #...暫時先不寫處理邏輯
     #save_path = "defalt.mp4"
-    cap_to_video(save_path, output_path)
+    save_path = cap_to_video(save_path)
     
 
     # background_tasks.add_task(remove_file, save_path)
 
-    return FileResponse(output_path, media_type="video/mp4")
-# 加上filename可自訂下載檔案名
+    return FileResponse(save_path, media_type="video/mp4")
