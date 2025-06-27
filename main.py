@@ -81,11 +81,8 @@ async def upload_file( file: UploadFile = File(...)):
 
 
 
-output_video_path = f"/tmp/RCaop{uuid.uuid4()}.mp4"
-#output_video_path=f"RCaop{uuid.uuid4()}.mp4"
-#output_video_path = "output.mp4"
 #影格擷取與合成影片
-def cap_to_video(save_path, target_fps=12):
+def cap_to_video(save_path, output_path, target_fps=12):
     cap = cv2.VideoCapture(save_path)
     fps = cap.get(cv2.CAP_PROP_FPS)
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -93,7 +90,7 @@ def cap_to_video(save_path, target_fps=12):
 
     #fourcc = cv2.VideoWriter_fourcc(*'mp4v') # four carator cope
     fourcc = cv2.VideoWriter_fourcc(*'avc1' )       
-    writer = cv2.VideoWriter(output_video_path, fourcc, target_fps, (width, height))
+    writer = cv2.VideoWriter(output_path, fourcc, target_fps, (width, height))
     frame_interval = int(fps // target_fps)
     count = 0
 
@@ -116,58 +113,18 @@ def cap_to_video(save_path, target_fps=12):
 
 @app.post("/upload_video")
 async def upload_video(file: UploadFile = File(...)): #, background_task:BackgroundTasks = BackgroundTasks()):
-    save_path =  f"RCaop{uuid.uuid4()}.mp4" #"video.mp4" #
+    save_path = f"/tmp/RCaop{uuid.uuid4()}.mp4"
+    output_path = f"/tmp/RCaop_output_{uuid.uuid4()}.mp4"
 
     with open(save_path, "wb") as buffer: # writebinary
         shutil.copyfileobj(file.file, buffer)
     
     #...暫時先不寫處理邏輯
     #save_path = "defalt.mp4"
-    cap_to_video(save_path)
-    save_path = output_video_path#cap_to_video(save_path)
+    cap_to_video(save_path, output_path)
+    
 
     # background_tasks.add_task(remove_file, save_path)
 
-    return FileResponse(save_path, media_type="video/mp4")
+    return FileResponse(output_path, media_type="video/mp4")
 # 加上filename可自訂下載檔案名
-
-
-'''
-
-
-'''
-
-
-'''
-# 第一版
-[] 將影片切成逐張圖片儲存至新創建的資料夾
-[] 將逐張影格做增強對比
-[] 將處理過後的影格逐張合成影片
-[] 回傳影片
-
-# 第二版
-[] 透過人物骨架做人物處理
-[] 骨架處理後可透過膨脹法
-
-
-# 第二版進階
-[] 串接或訓練ai做兩張相連影格間人物之動作預判與產生線稿
-[] 完成影格處理後，已前後兩張為單位，接續比對與修正人物線條顯示
-
-'''
-
-
-'''
-class Message(BaseModel):
-    name: str
-    age: int
-'''
-'''
-@app.get("/hello")
-def say_hello():
-    return {"message": "Hello FastAPI! "}
-
-@app.get("/ping")
-def a():
-    return {"status":"ok"}
-'''
