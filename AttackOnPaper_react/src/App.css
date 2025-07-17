@@ -1,0 +1,475 @@
+/*
+* {
+
+}
+*/
+/* box-shadow: [水平位移] [垂直位移] [模糊半徑] [陰影顏色]; */
+
+body{
+  background-color: #1a1a40;
+  color: aliceblue;
+  /* 
+  display: flex;
+  justify-content: center;
+  */
+  font-family: sans-serif;
+}
+
+.subname{
+  color: aquamarine;
+}
+
+.titleAOP {
+  justify-self: center;
+  padding: 2% 5%;
+  border-radius: 5px;
+  background-color: #404891;
+  margin-top: 20px;
+}
+
+.title2 {
+  font-size: 16px;
+}
+
+.subtitle {
+  justify-self: center;
+  padding: 2%  3% ;
+  border-radius: 5px;
+  background-color: #6269a3;
+
+}
+
+.upbtn {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 22px;
+}
+
+.result {
+  color: rgb(234, 74, 74);
+}
+
+.container {
+  display: flex;  /* 並排 */
+  justify-self: center;
+}
+
+
+.UploadAreaR {
+  background-color: #6269a3;
+  max-width: 450px;
+  width: 85%;
+  height: auto;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 2px 0px 5px 10px ;
+}
+
+.UploadAreaL {
+  background-color: #6269a3;
+  max-width: 450px;
+  width: 85%;
+  height: auto;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 2px 0px 5px 10px ;
+}
+
+.quescontainer {
+  display: flex;
+  justify-content: space-between;  /*左右靠 */
+}
+.quesbtn {
+  margin-top: 20px;
+  margin-right: 22px;
+  cursor: pointer;  /* 滑鼠碰到變手指 */
+}
+
+/* 下方樣本影片切換按鈕區塊 */
+.nnn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #404891;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 18px;
+  max-height: 50px;
+  width: 20%;
+  max-width: 150px;
+  padding: 0.5% 0%;
+}
+
+
+
+.nnn ul li.list-bottom a .icon {
+  font-size: 1.5em;
+  line-height: 75px;
+  transition: 0.5s;
+  color: rgba(255, 255, 255, 0.824);
+}
+
+.nnn ul li.list-bottom:hover a .icon {
+  color: rgba(255, 255, 255, 1);
+}
+
+.nnn ul li.list-bottom a .text {
+  position: absolute;
+  opacity: 0;
+  font-weight: 600;
+  font-size: 0.5em;
+  color: #222327;
+  transition: 0.5s;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: translateY(0px);
+}
+
+.nnn ul li.list-bottom.active a .text {
+  transform: translateY(16px);
+  opacity: 1;
+}
+.nnn ul {
+  position: relative; /* 確保裡面 li 不會亂飛 */
+  display: flex;
+  justify-content: space-between; /* 均分左右按鈕 */
+  width: 100%;
+  padding: 0 10px;
+}
+
+.nnn ul li.list-bottom {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.nnn ul li.list-bottom a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.nnn ul li.list-bottom .icon {
+  font-size: 1.3em;
+  color: white;
+}
+
+.nnn ul li.list-bottom .text {
+  font-size: 0.6em;
+  color: white;
+  margin-top: 2px;
+}
+
+
+
+/* 切換選單 */
+
+.navi {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 5px;
+}
+
+.navigation {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #404891;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top:18px ; 
+  max-height: 50px;
+  width: 20%;
+  max-width: 150px;
+  
+  padding: 0.5%  0% ;
+}
+
+
+.navigation ul {
+  transform: scale(0.8);
+  position: relative;
+  display: flex;
+  margin-right: 30px;
+}
+
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  font-size: 1.5em;
+  line-height: 75px;
+  transition: 0.5s;
+  color: rgba(255, 255, 255, 0.824);
+}
+
+.navigation ul li:hover a .icon {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+.navigation ul li a .text {
+  position: absolute;
+  opacity: 0;
+  font-weight: 600;
+  font-size: 0.5em;
+  color: #222327;
+  transition: 0.5s;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transform: translateY(0px);
+}
+
+.navigation ul li.active a .text {
+  transform: translateY(16px);
+  opacity: 1;
+}
+
+.indicator {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  transition: 0.5s;
+  bottom: 2px;
+  left: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.indicator::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  width: 80%;
+  height: 14px;
+  background: #29fd53;
+  border-radius: 10px;
+}
+
+
+@keyframes animate{
+  0%,
+  100%{
+    transform: rotate(35deg);
+  }
+  50%{
+    transform: rotate(55deg);
+  }
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator{
+  transform: translateX(calc(70px * 1));
+} 
+
+/* 切換選單 up */
+
+
+
+
+
+@media (max-width:512px) {
+  .upbtn {
+    justify-content: space-between;
+  }
+  .questxt {
+    font-size: 10;
+  }
+  .navigation {
+    padding: 0;
+    padding-left: 4px;
+  }
+}
+@media (max-width: 610px) {
+  .subtitle {
+    font-size: 13px;
+  }
+  .title2 {
+    display: none;
+  }
+  .navigation {
+    margin-top: 12px;
+    max-height: 42px;
+  }
+  .navigation ul {
+    transform: scale(0.6);
+  }
+/*
+  .navi {
+    display: block;
+  }*/
+}
+
+@media (max-width: 645px) {
+
+  .container{
+    display: block;
+  }
+  .UploadAreaR {
+    width: 90%;
+    height: auto;
+  }
+  .UploadAreaL {
+    width: 90%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .navigation{
+    max-height: 60px;
+  }
+}
+
+/*
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+*/
