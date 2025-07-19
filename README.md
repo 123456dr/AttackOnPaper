@@ -45,7 +45,7 @@ This is a full-stack project that includes both frontend and backend components:
 
 ## 📸 Demo
 To be continued...
-
+https://123456dr.github.io/AttackOnPaper
 
 <br><br><br><br>
 🙌 Thanks for checking it out! 👾  
@@ -55,4 +55,6 @@ If you like sketch-style AI animations or want to contribute, feel free to fork 
 ---
 
 ## Devlog
-To be continued...
+To be continued...<br>
+[![YouTube Video](https://github.com/user-attachments/assets/d0ad3316-42f0-44b6-8b29-5dccbf3ae0ad)]([https://www.youtube.com/watch?v=tOMvr-In8Fo](https://youtube.com/playlist?list=PLGOmOoHG5sUq1KGi2uSV0mNIbdpn7doEE&feature=shared)) <br>
+https://youtube.com/playlist?list=PLGOmOoHG5sUq1KGi2uSV0mNIbdpn7doEE&feature=shared
